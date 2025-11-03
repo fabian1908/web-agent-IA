@@ -1,0 +1,301 @@
+{
+  "info": {
+    "name": "BMS Assistant API - Documentación y Sistemas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API para el sistema de gestión documental con IA para proyectos BMS"
+  },
+  "item": [
+    {
+      "name": "🔧 Sistema - Status y Test",
+      "item": [
+        {
+          "name": "GET /api/test/status - Estado del sistema",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/test/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/test/usuarios - Listar usuarios (test)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/test/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "usuarios"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "👥 Usuarios",
+      "item": [
+        {
+          "name": "GET /api/usuarios - Listar todos los usuarios",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/usuarios/{id} - Obtener usuario por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/usuarios/email/{email} - Obtener usuario por email",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/email/admin@indra.com",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "email", "admin@indra.com"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/usuarios - Crear nuevo usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"nuevo.supervisor@indra.com\",\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Rodriguez\",\n  \"rol\": \"SUPERVISOR\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Eléctricos\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🏗️ Sistemas BMS",
+      "item": [
+        {
+          "name": "GET /api/sistemas - Listar todos los sistemas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/sistemas/activos - Listar sistemas activos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas/activos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas", "activos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/sistemas/{id} - Obtener sistema por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/sistemas - Crear nuevo sistema BMS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte\",\n  \"descripcion\": \"Sistema de climatización para la terminal norte del aeropuerto\",\n  \"protocoloComunicacion\": \"BACnet\",\n  \"fabricante\": \"Schneider Electric\",\n  \"usuarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/sistemas/{id} - Actualizar sistema",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte - Actualizado\",\n  \"descripcion\": \"Sistema de climatización actualizado con nuevos equipos\",\n  \"protocoloComunicacion\": \"BACnet/IP\",\n  \"fabricante\": \"Schneider Electric\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📄 Documentos",
+      "item": [
+        {
+          "name": "GET /api/documentos - Listar todos los documentos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/documentos/{id} - Obtener documento por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/documentos/usuario/{usuarioId} - Documentos por usuario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos/usuario/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos", "usuario", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/documentos - Crear nuevo documento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC - Terminal Norte\",\n  \"contenido\": \"Este documento contiene el reporte completo de comisionamiento del sistema HVAC...\",\n  \"tipoFormatoId\": 1,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"BORRADOR\",\n  \"observaciones\": \"Documento inicial pendiente de revisión\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/documentos/{id} - Actualizar documento",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC - Terminal Norte (Revisado)\",\n  \"contenido\": \"Este documento contiene el reporte completo de comisionamiento revisado...\",\n  \"estado\": \"REVISION\",\n  \"observaciones\": \"Documento en proceso de revisión por calidad\",\n  \"calificacion\": 4\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📋 Formatos",
+      "item": [
+        {
+          "name": "GET /api/test/formatos - Listar tipos de formato disponibles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/test/formatos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "formatos"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
