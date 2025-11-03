@@ -289,6 +289,91 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "🤖 Agentes IA",
+      "item": [
+        {
+          "name": "GET /api/agentes - Listar todos los agentes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/agentes/activos - Agentes activos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes/activos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes", "activos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/agentes - Crear agente IA",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Agente HVAC Especializado\",\n  \"descripcion\": \"Agente IA especializado en documentación de sistemas HVAC\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 1,\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 25, \\\"protocolo\\\": \\\"BACnet\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/agentes/{id} - Actualizar agente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Agente HVAC Mejorado\",\n  \"descripcion\": \"Agente IA actualizado para sistemas HVAC complejos\",\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 26, \\\"protocolo\\\": \\\"BACnet/IP\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/agentes/{id} - Desactivar agente",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
