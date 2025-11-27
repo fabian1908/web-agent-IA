@@ -1,39 +1,44 @@
 {
   "info": {
-    "name": "BMS Assistant API - Documentación y Sistemas",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "API para el sistema de gestión documental con IA para proyectos BMS"
+    "name": "BMS Assistant API - COMPLETA",
+    "description": "API completa para el sistema de gestión documental con IA",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "🔧 Sistema - Status y Test",
+      "name": "🏠 Health & Status",
       "item": [
         {
-          "name": "GET /api/test/status - Estado del sistema",
+          "name": "GET / - Home",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
             "url": {
-              "raw": "{{baseUrl}}/api/test/status",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "test", "status"]
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"]
             }
           },
           "response": []
         },
         {
-          "name": "GET /api/test/usuarios - Listar usuarios (test)",
+          "name": "GET /health - Health Check",
           "request": {
             "method": "GET",
             "url": {
-              "raw": "{{baseUrl}}/api/test/usuarios",
+              "raw": "{{baseUrl}}/health",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "test", "usuarios"]
+              "path": ["health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/test/status - Status Sistema",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/test/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "status"]
             }
           },
           "response": []
@@ -44,7 +49,7 @@
       "name": "👥 Usuarios",
       "item": [
         {
-          "name": "GET /api/usuarios - Listar todos los usuarios",
+          "name": "GET /api/usuarios - Listar todos",
           "request": {
             "method": "GET",
             "url": {
@@ -56,7 +61,7 @@
           "response": []
         },
         {
-          "name": "GET /api/usuarios/{id} - Obtener usuario por ID",
+          "name": "GET /api/usuarios/{id} - Obtener por ID",
           "request": {
             "method": "GET",
             "url": {
@@ -68,7 +73,7 @@
           "response": []
         },
         {
-          "name": "GET /api/usuarios/email/{email} - Obtener usuario por email",
+          "name": "GET /api/usuarios/email/{email} - Obtener por email",
           "request": {
             "method": "GET",
             "url": {
@@ -80,7 +85,7 @@
           "response": []
         },
         {
-          "name": "POST /api/usuarios - Crear nuevo usuario",
+          "name": "POST /api/usuarios - Crear usuario",
           "request": {
             "method": "POST",
             "header": [
@@ -91,12 +96,36 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"nuevo.supervisor@indra.com\",\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Rodriguez\",\n  \"rol\": \"SUPERVISOR\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Eléctricos\"\n}"
+              "raw": "{\n  \"email\": \"nuevo.supervisor@indra.com\",\n  \"passwordHash\": \"temp123\",\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Rodriguez\",\n  \"rol\": \"SUPERVISOR\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Eléctricos\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/usuarios",
               "host": ["{{baseUrl}}"],
               "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/usuarios/{id} - Desactivar usuario",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/usuarios/{id}/reactivar - Reactivar usuario",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/1/reactivar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "1", "reactivar"]
             }
           },
           "response": []
@@ -107,7 +136,7 @@
       "name": "🏗️ Sistemas BMS",
       "item": [
         {
-          "name": "GET /api/sistemas - Listar todos los sistemas",
+          "name": "GET /api/sistemas - Listar todos",
           "request": {
             "method": "GET",
             "url": {
@@ -119,7 +148,7 @@
           "response": []
         },
         {
-          "name": "GET /api/sistemas/activos - Listar sistemas activos",
+          "name": "GET /api/sistemas/activos - Sistemas activos",
           "request": {
             "method": "GET",
             "url": {
@@ -131,7 +160,7 @@
           "response": []
         },
         {
-          "name": "GET /api/sistemas/{id} - Obtener sistema por ID",
+          "name": "GET /api/sistemas/{id} - Obtener por ID",
           "request": {
             "method": "GET",
             "url": {
@@ -143,7 +172,7 @@
           "response": []
         },
         {
-          "name": "POST /api/sistemas - Crear nuevo sistema BMS",
+          "name": "POST /api/sistemas - Crear sistema",
           "request": {
             "method": "POST",
             "header": [
@@ -154,7 +183,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte\",\n  \"descripcion\": \"Sistema de climatización para la terminal norte del aeropuerto\",\n  \"protocoloComunicacion\": \"BACnet\",\n  \"fabricante\": \"Schneider Electric\",\n  \"usuarioId\": 1\n}"
+              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte\",\n  \"descripcion\": \"Sistema de climatización para la terminal norte\",\n  \"protocoloComunicacion\": \"BACnet\",\n  \"fabricante\": \"Schneider Electric\",\n  \"usuarioId\": 1\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/sistemas",
@@ -176,8 +205,20 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte - Actualizado\",\n  \"descripcion\": \"Sistema de climatización actualizado con nuevos equipos\",\n  \"protocoloComunicacion\": \"BACnet/IP\",\n  \"fabricante\": \"Schneider Electric\"\n}"
+              "raw": "{\n  \"nombre\": \"Sistema HVAC Actualizado\",\n  \"descripcion\": \"Sistema actualizado con nuevos equipos\",\n  \"protocoloComunicacion\": \"BACnet/IP\",\n  \"fabricante\": \"Schneider Electric\"\n}"
             },
+            "url": {
+              "raw": "{{baseUrl}}/api/sistemas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sistemas", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/sistemas/{id} - Desactivar sistema",
+          "request": {
+            "method": "DELETE",
             "url": {
               "raw": "{{baseUrl}}/api/sistemas/1",
               "host": ["{{baseUrl}}"],
@@ -192,7 +233,7 @@
       "name": "📄 Documentos",
       "item": [
         {
-          "name": "GET /api/documentos - Listar todos los documentos",
+          "name": "GET /api/documentos - Listar todos",
           "request": {
             "method": "GET",
             "url": {
@@ -204,7 +245,7 @@
           "response": []
         },
         {
-          "name": "GET /api/documentos/{id} - Obtener documento por ID",
+          "name": "GET /api/documentos/{id} - Obtener por ID",
           "request": {
             "method": "GET",
             "url": {
@@ -216,7 +257,7 @@
           "response": []
         },
         {
-          "name": "GET /api/documentos/usuario/{usuarioId} - Documentos por usuario",
+          "name": "GET /api/documentos/usuario/{usuarioId} - Por usuario",
           "request": {
             "method": "GET",
             "url": {
@@ -228,7 +269,19 @@
           "response": []
         },
         {
-          "name": "POST /api/documentos - Crear nuevo documento",
+          "name": "GET /api/documentos/sistema/{sistemaId} - Por sistema",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/documentos/sistema/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "documentos", "sistema", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/documentos - Crear documento",
           "request": {
             "method": "POST",
             "header": [
@@ -239,7 +292,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC - Terminal Norte\",\n  \"contenido\": \"Este documento contiene el reporte completo de comisionamiento del sistema HVAC...\",\n  \"tipoFormatoId\": 1,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"BORRADOR\",\n  \"observaciones\": \"Documento inicial pendiente de revisión\"\n}"
+              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC\",\n  \"contenido\": \"Este documento contiene el reporte completo...\",\n  \"tipoFormatoId\": 1,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"BORRADOR\",\n  \"observaciones\": \"Documento inicial\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/documentos",
@@ -261,7 +314,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC - Terminal Norte (Revisado)\",\n  \"contenido\": \"Este documento contiene el reporte completo de comisionamiento revisado...\",\n  \"estado\": \"REVISION\",\n  \"observaciones\": \"Documento en proceso de revisión por calidad\",\n  \"calificacion\": 4\n}"
+              "raw": "{\n  \"titulo\": \"Reporte Actualizado\",\n  \"contenido\": \"Contenido actualizado...\",\n  \"estado\": \"REVISION\",\n  \"observaciones\": \"En revisión\",\n  \"calificacion\": 4\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/documentos/1",
@@ -274,27 +327,10 @@
       ]
     },
     {
-      "name": "📋 Formatos",
-      "item": [
-        {
-          "name": "GET /api/test/formatos - Listar tipos de formato disponibles",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/test/formatos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "test", "formatos"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "name": "🤖 Agentes IA",
       "item": [
         {
-          "name": "GET /api/agentes - Listar todos los agentes",
+          "name": "GET /api/agentes - Listar todos",
           "request": {
             "method": "GET",
             "url": {
@@ -318,7 +354,31 @@
           "response": []
         },
         {
-          "name": "POST /api/agentes - Crear agente IA",
+          "name": "GET /api/agentes/sistema/{sistemaId} - Por sistema",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes/sistema/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes", "sistema", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/agentes/{id} - Obtener por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/agentes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "agentes", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/agentes - Crear agente",
           "request": {
             "method": "POST",
             "header": [
@@ -329,7 +389,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Agente HVAC Especializado\",\n  \"descripcion\": \"Agente IA especializado en documentación de sistemas HVAC\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 1,\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 25, \\\"protocolo\\\": \\\"BACnet\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+              "raw": "{\n  \"nombre\": \"Agente HVAC Especializado\",\n  \"descripcion\": \"Agente para documentación HVAC\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 1,\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 25, \\\"protocolo\\\": \\\"BACnet\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/agentes",
@@ -351,7 +411,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Agente HVAC Mejorado\",\n  \"descripcion\": \"Agente IA actualizado para sistemas HVAC complejos\",\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 26, \\\"protocolo\\\": \\\"BACnet/IP\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+              "raw": "{\n  \"nombre\": \"Agente Mejorado\",\n  \"descripcion\": \"Agente actualizado\",\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 26}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/agentes/1",
@@ -374,12 +434,274 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "📋 Formatos",
+      "item": [
+        {
+          "name": "GET /api/formatos - Listar todos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/formatos/activos - Formatos activos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos/activos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos", "activos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/formatos/{id} - Obtener por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/formatos/codigo/{codigo} - Por código",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos/codigo/N1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos", "codigo", "N1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/formatos - Crear formato",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"N4\",\n  \"nombre\": \"Nuevo Formato Personalizado\",\n  \"descripcion\": \"Formato personalizado para documentación especial\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/formatos/{id} - Actualizar formato",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Formato Actualizado\",\n  \"descripcion\": \"Descripción actualizada\",\n  \"plantilla\": \"Nueva plantilla\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/formatos/{id} - Desactivar formato",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/formatos/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "formatos", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📊 Dashboard & Métricas",
+      "item": [
+        {
+          "name": "GET /api/dashboard/estadisticas - Estadísticas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/estadisticas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "estadisticas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/metricas - Listar métricas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/metricas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "metricas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/metricas/documento/{documentoId} - Por documento",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/metricas/documento/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "metricas", "documento", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/metricas - Crear métrica",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentoId\": 1,\n  \"tiempoGeneracionSegundos\": 120,\n  \"erroresDetectados\": 2,\n  \"observacionesCalidad\": 1,\n  \"satisfaccionUsuario\": 4\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/metricas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "metricas"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🕐 Historial",
+      "item": [
+        {
+          "name": "GET /api/historial - Listar todo",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/historial",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "historial"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/historial/documento/{documentoId} - Por documento",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/historial/documento/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "historial", "documento", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/historial/usuario/{usuarioId} - Por usuario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/historial/usuario/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "historial", "usuario", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/historial - Crear registro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentoId\": 1,\n  \"usuarioId\": 1,\n  \"accion\": \"CREACION\",\n  \"detalles\": \"Documento creado exitosamente\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/historial",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "historial"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🤖 IA - Generación de Documentos",
+      "item": [
+        {
+          "name": "POST /api/ia/generar-documento - Generar con IA",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipoFormato\": \"N1\",\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"datos\": {\n    \"equipos\": [\"Chiller 1\", \"Torre de enfriamiento\"],\n    \"configuraciones\": \"Temperatura: 22°C, Humedad: 50%\",\n    \"pruebas_realizadas\": [\"Prueba de presión\", \"Prueba de temperatura\"],\n    \"resultados\": \"Todos los sistemas funcionando correctamente\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ia/generar-documento",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ia", "generar-documento"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:8080",
+      "value": "http://localhost:8888",
       "type": "string"
     }
   ]
