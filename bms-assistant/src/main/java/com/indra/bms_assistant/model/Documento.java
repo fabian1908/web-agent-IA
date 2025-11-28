@@ -25,6 +25,9 @@ public class Documento {
     @Column(name = "usuario_id")
     private Long usuarioId;
 
+    @Column(name = "agente_id")
+    private Long agenteId;
+
     private String estado = "BORRADOR";
 
     private Integer version = 1;
@@ -68,6 +71,9 @@ public class Documento {
 
     public Long getUsuarioId() { return usuarioId; }
     public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
+
+    public Long getAgenteId() { return agenteId; }
+    public void setAgenteId(Long agenteId) { this.agenteId = agenteId; }
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }

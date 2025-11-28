@@ -2,6 +2,7 @@ package com.indra.bms_assistant.service;
 
 import com.indra.bms_assistant.model.AgenteIA;
 import com.indra.bms_assistant.repository.AgenteIARepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,9 @@ import java.util.Optional;
 public class AgenteIAService {
 
     private final AgenteIARepository agenteIARepository;
+
+    @Value("${gemini.api.key}")
+    private String geminiApiKey;
 
     public AgenteIAService(AgenteIARepository agenteIARepository) {
         this.agenteIARepository = agenteIARepository;
@@ -37,6 +41,7 @@ public class AgenteIAService {
     }
 
     public AgenteIA crearAgente(AgenteIA agente) {
+        // TODO: Use geminiApiKey to authenticate with Gemini model
         return agenteIARepository.save(agente);
     }
 
@@ -48,17 +53,13 @@ public class AgenteIAService {
             agente.setDescripcion(agenteActualizado.getDescripcion());
             agente.setConfiguracion(agenteActualizado.getConfiguracion());
             agente.setModeloIA(agenteActualizado.getModeloIA());
+            agente.setActivo(agenteActualizado.getActivo());
             return agenteIARepository.save(agente);
         }
         return null;
     }
 
-    public void desactivarAgente(Long id) {
-        Optional<AgenteIA> agente = agenteIARepository.findById(id);
-        if (agente.isPresent()) {
-            AgenteIA agenteIA = agente.get();
-            agenteIA.setActivo(false);
-            agenteIARepository.save(agenteIA);
-        }
+    public void eliminarAgente(Long id) {
+        agenteIARepository.deleteById(id);
     }
 }

@@ -53,4 +53,10 @@ public class DocumentoController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarDocumento(@PathVariable Long id) {
+        documentoService.eliminarDocumento(id);
+        return ResponseEntity.ok().build();
+    }
 }

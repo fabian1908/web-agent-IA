@@ -39,6 +39,7 @@ public class DataLoader implements CommandLineRunner {
         // Insertar usuarios de prueba si no existen
         if (usuarioRepository.count() == 0) {
             // Usar password temporal - en producción debería estar encriptado
+            // En el DataLoader, cambiar los INSERT de usuarios:
             Usuario admin = new Usuario("admin@indra.com", "admin123", "Admin", "Sistema", "ADMIN", "INDRA", "Sistemas");
             Usuario supervisor = new Usuario("supervisor@indra.com", "super123", "Carlos", "Supervisor", "SUPERVISOR", "INDRA", "HVAC");
             Usuario practicante = new Usuario("practicante@indra.com", "pract123", "Ana", "Practicante", "PRACTICANTE", "INDRA", "Eléctricos");

@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "BMS Assistant API - COMPLETA",
-    "description": "API completa para el sistema de gestión documental con IA",
+    "name": "BMS Assistant API - DATOS ÚNICOS",
+    "description": "API con datos manuales únicos para evitar conflictos",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "name": "👥 Usuarios",
+      "name": "👥 Usuarios - DATOS ÚNICOS",
       "item": [
         {
           "name": "GET /api/usuarios - Listar todos",
@@ -61,31 +61,7 @@
           "response": []
         },
         {
-          "name": "GET /api/usuarios/{id} - Obtener por ID",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/usuarios/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "usuarios", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/usuarios/email/{email} - Obtener por email",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/usuarios/email/admin@indra.com",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "usuarios", "email", "admin@indra.com"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/usuarios - Crear usuario",
+          "name": "POST /api/usuarios - Crear usuario TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -96,7 +72,29 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"nuevo.supervisor@indra.com\",\n  \"passwordHash\": \"temp123\",\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Rodriguez\",\n  \"rol\": \"SUPERVISOR\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Eléctricos\"\n}"
+              "raw": "{\n  \"email\": \"test1@indra.com\",\n  \"passwordHash\": \"test123\",\n  \"nombre\": \"Usuario\",\n  \"apellido\": \"Test1\",\n  \"rol\": \"SUPERVISOR\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Test1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/usuarios - Crear usuario TEST2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test2@indra.com\",\n  \"passwordHash\": \"test123\",\n  \"nombre\": \"Usuario\",\n  \"apellido\": \"Test2\",\n  \"rol\": \"PRACTICANTE\",\n  \"empresa\": \"INDRA\",\n  \"especialidad\": \"Sistemas Test2\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/usuarios",
@@ -111,21 +109,9 @@
           "request": {
             "method": "DELETE",
             "url": {
-              "raw": "{{baseUrl}}/api/usuarios/1",
+              "raw": "{{baseUrl}}/api/usuarios/4",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "usuarios", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PUT /api/usuarios/{id}/reactivar - Reactivar usuario",
-          "request": {
-            "method": "PUT",
-            "url": {
-              "raw": "{{baseUrl}}/api/usuarios/1/reactivar",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "usuarios", "1", "reactivar"]
+              "path": ["api", "usuarios", "4"]
             }
           },
           "response": []
@@ -133,7 +119,7 @@
       ]
     },
     {
-      "name": "🏗️ Sistemas BMS",
+      "name": "🏗️ Sistemas BMS - DATOS ÚNICOS",
       "item": [
         {
           "name": "GET /api/sistemas - Listar todos",
@@ -148,31 +134,7 @@
           "response": []
         },
         {
-          "name": "GET /api/sistemas/activos - Sistemas activos",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/sistemas/activos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "sistemas", "activos"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/sistemas/{id} - Obtener por ID",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/sistemas/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "sistemas", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/sistemas - Crear sistema",
+          "name": "POST /api/sistemas - Crear sistema TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -183,7 +145,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Sistema HVAC Terminal Norte\",\n  \"descripcion\": \"Sistema de climatización para la terminal norte\",\n  \"protocoloComunicacion\": \"BACnet\",\n  \"fabricante\": \"Schneider Electric\",\n  \"usuarioId\": 1\n}"
+              "raw": "{\n  \"nombre\": \"Sistema HVAC Test1\",\n  \"descripcion\": \"Sistema de climatización test1\",\n  \"protocoloComunicacion\": \"BACnet\",\n  \"fabricante\": \"Schneider Electric\",\n  \"usuarioId\": 1\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/sistemas",
@@ -194,9 +156,9 @@
           "response": []
         },
         {
-          "name": "PUT /api/sistemas/{id} - Actualizar sistema",
+          "name": "POST /api/sistemas - Crear sistema TEST2",
           "request": {
-            "method": "PUT",
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -205,24 +167,12 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Sistema HVAC Actualizado\",\n  \"descripcion\": \"Sistema actualizado con nuevos equipos\",\n  \"protocoloComunicacion\": \"BACnet/IP\",\n  \"fabricante\": \"Schneider Electric\"\n}"
+              "raw": "{\n  \"nombre\": \"Sistema Eléctrico Test2\",\n  \"descripcion\": \"Sistema eléctrico test2\",\n  \"protocoloComunicacion\": \"Modbus\",\n  \"fabricante\": \"Siemens\",\n  \"usuarioId\": 1\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/sistemas/1",
+              "raw": "{{baseUrl}}/api/sistemas",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "sistemas", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DELETE /api/sistemas/{id} - Desactivar sistema",
-          "request": {
-            "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/api/sistemas/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "sistemas", "1"]
+              "path": ["api", "sistemas"]
             }
           },
           "response": []
@@ -230,7 +180,7 @@
       ]
     },
     {
-      "name": "📄 Documentos",
+      "name": "📄 Documentos - DATOS ÚNICOS",
       "item": [
         {
           "name": "GET /api/documentos - Listar todos",
@@ -245,43 +195,7 @@
           "response": []
         },
         {
-          "name": "GET /api/documentos/{id} - Obtener por ID",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/documentos/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "documentos", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/documentos/usuario/{usuarioId} - Por usuario",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/documentos/usuario/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "documentos", "usuario", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/documentos/sistema/{sistemaId} - Por sistema",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/documentos/sistema/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "documentos", "sistema", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/documentos - Crear documento",
+          "name": "POST /api/documentos - Crear documento TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -292,7 +206,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento HVAC\",\n  \"contenido\": \"Este documento contiene el reporte completo...\",\n  \"tipoFormatoId\": 1,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"BORRADOR\",\n  \"observaciones\": \"Documento inicial\"\n}"
+              "raw": "{\n  \"titulo\": \"Reporte de Comisionamiento Test1\",\n  \"contenido\": \"Este documento contiene el reporte completo del sistema test1...\",\n  \"tipoFormatoId\": 1,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"BORRADOR\",\n  \"observaciones\": \"Documento inicial test1\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/documentos",
@@ -303,9 +217,9 @@
           "response": []
         },
         {
-          "name": "PUT /api/documentos/{id} - Actualizar documento",
+          "name": "POST /api/documentos - Crear documento TEST2",
           "request": {
-            "method": "PUT",
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -314,12 +228,12 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Reporte Actualizado\",\n  \"contenido\": \"Contenido actualizado...\",\n  \"estado\": \"REVISION\",\n  \"observaciones\": \"En revisión\",\n  \"calificacion\": 4\n}"
+              "raw": "{\n  \"titulo\": \"Reporte de Pruebas Test2\",\n  \"contenido\": \"Este documento contiene las pruebas del sistema test2...\",\n  \"tipoFormatoId\": 2,\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"estado\": \"REVISION\",\n  \"observaciones\": \"Documento en revisión test2\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/documentos/1",
+              "raw": "{{baseUrl}}/api/documentos",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "documentos", "1"]
+              "path": ["api", "documentos"]
             }
           },
           "response": []
@@ -327,7 +241,7 @@
       ]
     },
     {
-      "name": "🤖 Agentes IA",
+      "name": "🤖 Agentes IA - DATOS ÚNICOS",
       "item": [
         {
           "name": "GET /api/agentes - Listar todos",
@@ -342,43 +256,7 @@
           "response": []
         },
         {
-          "name": "GET /api/agentes/activos - Agentes activos",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/agentes/activos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "agentes", "activos"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/agentes/sistema/{sistemaId} - Por sistema",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/agentes/sistema/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "agentes", "sistema", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/agentes/{id} - Obtener por ID",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/agentes/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "agentes", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/agentes - Crear agente",
+          "name": "POST /api/agentes - Crear agente TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -389,7 +267,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Agente HVAC Especializado\",\n  \"descripcion\": \"Agente para documentación HVAC\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 1,\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 25, \\\"protocolo\\\": \\\"BACnet\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+              "raw": "{\n  \"nombre\": \"Agente HVAC Test1\",\n  \"descripcion\": \"Agente para documentación HVAC test1\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 1,\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 25, \\\"protocolo\\\": \\\"BACnet\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/agentes",
@@ -400,9 +278,9 @@
           "response": []
         },
         {
-          "name": "PUT /api/agentes/{id} - Actualizar agente",
+          "name": "POST /api/agentes - Crear agente TEST2",
           "request": {
-            "method": "PUT",
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -411,24 +289,12 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Agente Mejorado\",\n  \"descripcion\": \"Agente actualizado\",\n  \"configuracion\": \"{\\\"temperatura_maxima\\\": 26}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
+              "raw": "{\n  \"nombre\": \"Agente Eléctrico Test2\",\n  \"descripcion\": \"Agente para sistemas eléctricos test2\",\n  \"sistemaId\": 1,\n  \"tipoFormatoId\": 2,\n  \"configuracion\": \"{\\\"voltaje_maximo\\\": 480, \\\"protocolo\\\": \\\"Modbus\\\"}\",\n  \"modeloIA\": \"gemini-pro\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/agentes/1",
+              "raw": "{{baseUrl}}/api/agentes",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "agentes", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DELETE /api/agentes/{id} - Desactivar agente",
-          "request": {
-            "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/api/agentes/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "agentes", "1"]
+              "path": ["api", "agentes"]
             }
           },
           "response": []
@@ -436,7 +302,7 @@
       ]
     },
     {
-      "name": "📋 Formatos",
+      "name": "📋 Formatos - DATOS ÚNICOS",
       "item": [
         {
           "name": "GET /api/formatos - Listar todos",
@@ -451,43 +317,7 @@
           "response": []
         },
         {
-          "name": "GET /api/formatos/activos - Formatos activos",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/formatos/activos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "formatos", "activos"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/formatos/{id} - Obtener por ID",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/formatos/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "formatos", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/formatos/codigo/{codigo} - Por código",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/formatos/codigo/N1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "formatos", "codigo", "N1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/formatos - Crear formato",
+          "name": "POST /api/formatos - Crear formato TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -498,7 +328,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"codigo\": \"N4\",\n  \"nombre\": \"Nuevo Formato Personalizado\",\n  \"descripcion\": \"Formato personalizado para documentación especial\"\n}"
+              "raw": "{\n  \"codigo\": \"NT1\",\n  \"nombre\": \"Formato Test Personalizado1\",\n  \"descripcion\": \"Formato personalizado para pruebas test1\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/formatos",
@@ -509,9 +339,9 @@
           "response": []
         },
         {
-          "name": "PUT /api/formatos/{id} - Actualizar formato",
+          "name": "POST /api/formatos - Crear formato TEST2",
           "request": {
-            "method": "PUT",
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -520,24 +350,12 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Formato Actualizado\",\n  \"descripcion\": \"Descripción actualizada\",\n  \"plantilla\": \"Nueva plantilla\"\n}"
+              "raw": "{\n  \"codigo\": \"NT2\",\n  \"nombre\": \"Formato Test Personalizado2\",\n  \"descripcion\": \"Formato personalizado para pruebas test2\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/api/formatos/1",
+              "raw": "{{baseUrl}}/api/formatos",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "formatos", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DELETE /api/formatos/{id} - Desactivar formato",
-          "request": {
-            "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/api/formatos/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "formatos", "1"]
+              "path": ["api", "formatos"]
             }
           },
           "response": []
@@ -560,31 +378,7 @@
           "response": []
         },
         {
-          "name": "GET /api/metricas - Listar métricas",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/metricas",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "metricas"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/metricas/documento/{documentoId} - Por documento",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/metricas/documento/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "metricas", "documento", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/metricas - Crear métrica",
+          "name": "POST /api/metricas - Crear métrica TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -611,43 +405,7 @@
       "name": "🕐 Historial",
       "item": [
         {
-          "name": "GET /api/historial - Listar todo",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/historial",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "historial"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/historial/documento/{documentoId} - Por documento",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/historial/documento/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "historial", "documento", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET /api/historial/usuario/{usuarioId} - Por usuario",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/historial/usuario/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "historial", "usuario", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST /api/historial - Crear registro",
+          "name": "POST /api/historial - Crear registro TEST1",
           "request": {
             "method": "POST",
             "header": [
@@ -658,7 +416,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"documentoId\": 1,\n  \"usuarioId\": 1,\n  \"accion\": \"CREACION\",\n  \"detalles\": \"Documento creado exitosamente\"\n}"
+              "raw": "{\n  \"documentoId\": 1,\n  \"usuarioId\": 1,\n  \"accion\": \"CREACION\",\n  \"detalles\": \"Documento creado exitosamente - Test1\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/historial",
@@ -685,7 +443,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"tipoFormato\": \"N1\",\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"datos\": {\n    \"equipos\": [\"Chiller 1\", \"Torre de enfriamiento\"],\n    \"configuraciones\": \"Temperatura: 22°C, Humedad: 50%\",\n    \"pruebas_realizadas\": [\"Prueba de presión\", \"Prueba de temperatura\"],\n    \"resultados\": \"Todos los sistemas funcionando correctamente\"\n  }\n}"
+              "raw": "{\n  \"tipoFormato\": \"N1\",\n  \"sistemaId\": 1,\n  \"usuarioId\": 1,\n  \"datos\": {\n    \"equipos\": [\"Chiller Test\", \"Torre de enfriamiento\"],\n    \"configuraciones\": \"Temperatura: 22°C, Humedad: 50%\",\n    \"pruebas_realizadas\": [\"Prueba de presión\", \"Prueba de temperatura\"],\n    \"resultados\": \"Todos los sistemas funcionando correctamente\"\n  }\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/ia/generar-documento",

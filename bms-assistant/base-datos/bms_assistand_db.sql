@@ -43,7 +43,7 @@ CREATE TABLE agentes_ia (
                             descripcion TEXT,
                             sistema_id INTEGER REFERENCES sistemas_bms(id),
                             tipo_formato_id INTEGER REFERENCES tipos_formato(id),
-                            configuracion JSONB, -- Parámetros específicos del agente
+                            configuracion TEXT, -- CAMBIO: de JSONB a TEXT
                             modelo_ia VARCHAR(50) DEFAULT 'gemini-pro',
                             activo BOOLEAN DEFAULT TRUE,
                             fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP

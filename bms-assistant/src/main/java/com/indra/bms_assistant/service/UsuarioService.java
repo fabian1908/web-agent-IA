@@ -32,7 +32,24 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public void eliminarUsuario(Long id) {
-        usuarioRepository.deleteById(id);
+    // MÉTODO CRÍTICO: Debe existir y funcionar
+    public boolean eliminarUsuario(Long id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if (usuario.isPresent()) {
+            Usuario usuarioExistente = usuario.get();
+            usuarioExistente.setActivo(false);
+            usuarioRepository.save(usuarioExistente);
+            return true;
+        }
+        return false;
+    }
+
+    // Método adicional si necesitas eliminación física
+    public boolean eliminarUsuarioFisicamente(Long id) {
+        if (usuarioRepository.existsById(id)) {
+            usuarioRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

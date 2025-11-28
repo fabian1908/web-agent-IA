@@ -2,6 +2,7 @@ package com.indra.bms_assistant.controller;
 
 import com.indra.bms_assistant.model.AgenteIA;
 import com.indra.bms_assistant.service.AgenteIAService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 public class AgenteIAController {
 
     private final AgenteIAService agenteIAService;
+
+    @Value("${gemini.api.key}")
+    private String geminiApiKey;
 
     public AgenteIAController(AgenteIAService agenteIAService) {
         this.agenteIAService = agenteIAService;
@@ -60,8 +64,8 @@ public class AgenteIAController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> desactivarAgente(@PathVariable Long id) {
-        agenteIAService.desactivarAgente(id);
+    public ResponseEntity<Void> eliminarAgente(@PathVariable Long id) {
+        agenteIAService.eliminarAgente(id);
         return ResponseEntity.ok().build();
     }
 }

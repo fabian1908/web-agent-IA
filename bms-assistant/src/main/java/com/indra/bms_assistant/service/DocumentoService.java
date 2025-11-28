@@ -45,8 +45,13 @@ public class DocumentoService {
             documento.setEstado(documentoActualizado.getEstado());
             documento.setObservaciones(documentoActualizado.getObservaciones());
             documento.setCalificacion(documentoActualizado.getCalificacion());
+            documento.setAgenteId(documentoActualizado.getAgenteId());
             return documentoRepository.save(documento);
         }
         return null;
+    }
+
+    public void eliminarDocumento(Long id) {
+        documentoRepository.deleteById(id);
     }
 }

@@ -55,8 +55,8 @@ public class SistemaBMSController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> desactivarSistema(@PathVariable Long id) {
-        sistemaBMSService.desactivarSistema(id);
+    public ResponseEntity<Void> eliminarSistema(@PathVariable Long id) {
+        sistemaBMSService.eliminarSistema(id);
         return ResponseEntity.ok().build();
     }
 }
